@@ -1,0 +1,70 @@
+.modal-button-delete {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+}
+
+.modal-border-top-button-delete {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: #FF8533;
+}
+
+.modal-content-button-delete {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #2F2A26;
+    padding: 25px;
+    width: 85%;
+    max-width: 420px;
+    border-radius: 12px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header-button-delete {
+    text-align: center;
+    font-size: 20px;
+    color: #F5F5F5;
+    margin-bottom: 15px;
+}
+
+.modal-buttons-button-delete {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    gap: 15px;
+}
+
+.button-button-delete {
+    padding: 12px 25px;
+    font-size: 16px;
+    border: 2px solid #FF8533;
+    background-color: transparent;
+    color: #F5F5F5;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.button-button-delete:hover {
+    background-color: #FF8533;
+    color: #FFF;
+    border-color: #FF8533;
+}
+
+.button-button-delete:focus {
+    outline: none;
+    box-shadow: 0 0 5px 2px rgba(255, 133, 51, 0.5);
+}

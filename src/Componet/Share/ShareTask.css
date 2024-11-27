@@ -1,0 +1,90 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.modal-share {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 600px;
+  background: #1B1A17;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 20px;
+  z-index: 1000;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.modal-share-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 15px;
+  align-items: center;
+}
+
+.share-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  outline: none;
+  padding: 10px;
+}
+
+.share-button img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.share-button:hover {
+  transform: scale(1.2);
+  opacity: 0.8;
+}
+
+.share-button:focus {
+  outline: none;
+}
+
+@media (max-width: 600px) {
+  .modal-share {
+    width: calc(100% - 20px);
+  }
+
+  .modal-share-content {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .modal-share {
+    width: calc(100% - 10px);
+    padding: 15px;
+  }
+
+  .modal-share-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .share-button {
+    margin-bottom: 10px;
+  }
+}

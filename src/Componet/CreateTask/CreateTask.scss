@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.task-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 95%;
+    padding: 12px;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 10px 0;
+    background-color: #242320;
+}
+
+.task-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(163, 87, 9, 0.6);
+}
+
+.task-container-text {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-right: 12px;
+    max-width: calc(100% - 60px);
+    overflow: hidden;
+}
+
+.delete-button {
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    border: 3px solid #A35709;
+    background: #1B1A17;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    outline: none;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.delete-button:hover {
+    background: #A35709;
+    transform: scale(1.1);
+    box-shadow: 0 0 8px rgba(163, 87, 9, 0.8);
+}
+
+.delete-button img {
+    width: 20px;
+    height: 20px;
+    transition: filter 0.3s;
+}
+
+.delete-button:hover img {
+    filter: brightness(0) invert(1);
+}
+
+.task-about {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #F0E3CA;
+    margin: 0;
+    overflow-wrap: break-word;
+    text-align: left;
+}
+
+.task-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 32px;
+    color: #F0E3CA;
+    margin: 0;
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+@media (max-width: 600px) {
+    .task-title {
+        font-size: 22px;
+        line-height: 26px;
+        margin-bottom: 8px;
+    }
+
+    .task-about {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .task-container-text {
+        margin-right: 8px;
+    }
+
+    .delete-button {
+        width: 40px;
+        height: 40px;
+        margin-top: 8px;
+    }
+
+    .delete-button img {
+        width: 18px;
+        height: 18px;
+    }
+}
