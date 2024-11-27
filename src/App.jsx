@@ -1,15 +1,21 @@
 import React from 'react';
-import './Main/StyleMain.scss';
-import './Component/CreateTask/CreateTask.scss';
-import './Component/AdditionTask/AdditionTask.scss';
-import './App.css';
-import CreateTask from './Component/CreateTask/CreateTask.jsx';
+import "./"
+//import './Main/StyleMain.css';
+
+//import './Сomponents/CreateTask/CreateTask.scss';
+//import './Сomponents/AdditionTask/AdditionTask.scss';
+//import './App.css';  // Внешний CSS
+
+//import CreateTask from './components/CreateTask/CreateTask';
+//import AdditionTask from './components/AdditionTask/AdditionTask';
+
 
 function App() {
   return (
     <div>
       <div className="container">
         <CreateTask />
+        <AdditionTask />
       </div>
     </div>
   );
