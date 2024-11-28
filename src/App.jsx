@@ -1,14 +1,8 @@
 import React from 'react';
-import "./"
-//import './Main/StyleMain.css';
-
-//import './Сomponents/CreateTask/CreateTask.scss';
-//import './Сomponents/AdditionTask/AdditionTask.scss';
-//import './App.css';  // Внешний CSS
-
-//import CreateTask from './components/CreateTask/CreateTask';
-//import AdditionTask from './components/AdditionTask/AdditionTask';
-
+import './StyleMain.css';
+import "./App.css"
+import { CreateTask } from "./Component/CreateTask/CreateTask.jsx"
+import { AdditionTask } from "./Component/AdditionTask/AdditionTask.jsx"
 
 function App() {
   return (

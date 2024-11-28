@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { DragDropContext } from '@hello-pangea/dnd';
 import TaskList from './TaskList';
-import TaskInputForm from './TaskForm';
-import DeleteModal from '../Delete/Delete';
-import EditModal from '../Edit/Edit';
-import ShareModal from '../Share/ShareTask';
+import TaskInputForm from './TaskForm.jsx';
+import DeleteModal from '../Delete/Delete.jsx';
+import EditModal from '../Edit/Edit.jsx';
+import ShareModal from '../Share/ShareTask.jsx';
 
 const CreateTask = () => {
   const [tasks, setTasks] = useState([]);
@@ -149,4 +149,4 @@ const CreateTask = () => {
   );
 };
 
-export default CreateTask;
+export { CreateTask };

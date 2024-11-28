@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import plusIcon from '../../Icon/plus.png';
 
-const TaskInputForm = ({ onAddClick }) => {
+const TaskForm = ({ onAddClick }) => {
   const [formData, setFormData] = useState({
     title: '',
     about: '',
