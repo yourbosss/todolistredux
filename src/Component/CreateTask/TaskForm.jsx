@@ -17,14 +17,14 @@ const TaskForm = ({ title, setTitle, about, setAbout, onAddClick }) => {
           className="input-field"
           type="text"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}  // Обновляем title через setTitle
+          onChange={(e) => setTitle(e.target.value)}
           placeholder="Title..."
         />
         <input
           className="input-field"
           type="text"
           value={about}
-          onChange={(e) => setAbout(e.target.value)}  // Обновляем about через setAbout
+          onChange={(e) => setAbout(e.target.value)}
           placeholder="About..."
         />
       </div>

@@ -22,7 +22,7 @@ const CreateTask = () => {
     about: '',
   });
 
-  // Загрузка задач из localStorage
+  // загрузка задач из localStorage
   const loadTasks = useCallback(() => {
     const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
     setTasks(savedTasks);
@@ -32,13 +32,11 @@ const CreateTask = () => {
     loadTasks();
   }, [loadTasks]);
 
-  // Сохранение задач в localStorage
   const saveTasks = useCallback((updatedTasks) => {
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
     setTasks(updatedTasks);
   }, []);
 
-  // Обработчик изменения полей ввода
   const handleFormChange = (field, value) => {
     setFormFields((prevFields) => ({
       ...prevFields,
@@ -46,7 +44,7 @@ const CreateTask = () => {
     }));
   };
 
-  // Добавление новой задачи
+  // новая задача.
   const handleAddClick = () => {
     const { title, about } = formFields;
 
@@ -62,26 +60,26 @@ const CreateTask = () => {
     setFormFields({ title: '', about: '' });
   };
 
-  // Обработчик удаления задачи
+  // обработчик задачи.
   const handleDeleteClick = (taskId) => {
     setTaskToDelete(taskId);
     setModals((prev) => ({ ...prev, delete: true }));
   };
 
-  // Подтверждение удаления задачи
+  // удаления задачи.
   const handleConfirmDelete = () => {
     const updatedTasks = tasks.filter((task) => task.id !== taskToDelete);
     saveTasks(updatedTasks);
     setModals((prev) => ({ ...prev, delete: false }));
   };
 
-  // Открытие модального окна для редактирования задачи
+  // редактирование задачи.
   const handleEditTask = (task) => {
     setTaskToEdit(task);
     setModals((prev) => ({ ...prev, edit: true }));
   };
 
-  // Сохранение изменений редактируемой задачи
+  // изменение редактируемой задачи.
   const handleSaveEdit = (updatedTask) => {
     const updatedTasks = tasks.map((task) =>
       task.id === updatedTask.id ? updatedTask : task
@@ -90,13 +88,13 @@ const CreateTask = () => {
     setModals((prev) => ({ ...prev, edit: false }));
   };
 
-  // Открытие модального окна для шаринга задачи
+  // открытие модального окна.
   const handleShareClick = (task) => {
     setTaskToShare(task);
     setModals((prev) => ({ ...prev, share: true }));
   };
 
-  // Обработчик события завершения перетаскивания задачи
+  // обработчик события завершения.
   const handleOnDragEnd = (result) => {
     if (!result.destination) return;
 
@@ -107,12 +105,12 @@ const CreateTask = () => {
     saveTasks(reorderedTasks);
   };
 
-  // Раскрытие и сворачивание задачи
+  // раскрытие и сворачивание задачи.
   const handleToggleExpand = (taskId) => {
     setExpandedTaskId((prevId) => (prevId === taskId ? null : taskId));
   };
 
-  // Закрытие модальных окон
+  // закрытие модальных окон.
   const handleModalClose = (modal) => {
     setModals((prev) => ({ ...prev, [modal]: false }));
   };
