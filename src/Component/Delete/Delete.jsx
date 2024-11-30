@@ -14,15 +14,10 @@ const DeleteModal = ({ onConfirm, onCancel }) => {
     return (
         <div className="modal-button-delete">
             <div className="modal-content-button-delete">
-                {/* Верхняя граница модалки */}
                 <div className="modal-border-top-button-delete" />
-
-                {/* Заголовок модалки */}
                 <div className="modal-header-button-delete">
                     <h3>Are you sure you want to delete this task?</h3>
                 </div>
-
-                {/* Кнопки для подтверждения или отмены */}
                 <div className="modal-buttons-button-delete">
                     <button
                         className="button-button-delete"

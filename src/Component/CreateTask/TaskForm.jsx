@@ -1,47 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import plusIcon from '../../Icon/plus.png';
 
-const TaskForm = ({ onAddClick }) => {
-  const [formData, setFormData] = useState({
-    title: '',
-    about: '',
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
+const TaskForm = ({ title, setTitle, about, setAbout, onAddClick }) => {
   const handleSubmit = () => {
-    if (formData.title.trim() === '' || formData.about.trim() === '') {
-      alert('Заполни все поля живо');
+    if (title.trim() === '' || about.trim() === '') {
+      alert('Заполни все поля!');
       return;
     }
-    onAddClick(formData);
-    setFormData({ title: '', about: '' });
+    onAddClick();
   };
 
   return (
     <div className="input-container-wrapper">
       <div className="input-container">
         <input
-          type="text"
-          name="title"
           className="input-field"
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}  // Обновляем title через setTitle
           placeholder="Title..."
-          value={formData.title}
-          onChange={handleChange}
         />
         <input
-          type="text"
-          name="about"
           className="input-field"
+          type="text"
+          value={about}
+          onChange={(e) => setAbout(e.target.value)}  // Обновляем about через setAbout
           placeholder="About..."
-          value={formData.about}
-          onChange={handleChange}
         />
       </div>
       <button className="add-button" onClick={handleSubmit}>

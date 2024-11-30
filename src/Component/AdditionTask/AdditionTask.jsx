@@ -4,6 +4,7 @@ import shareIcon from '../../Icon/sharee.png';
 import editIcon from '../../Icon/edit.png';
 import deleteIcon from '../../Icon/cross.png';
 import infoIcon from '../../Icon/info.png';
+
 const AdditionTask = ({ taskTitle, taskAbout, onToggleExpand, onDelete, onEdit, onShare }) => {
     const [showIcons, setShowIcons] = useState(false);
 
@@ -67,6 +68,6 @@ const AdditionTask = ({ taskTitle, taskAbout, onToggleExpand, onDelete, onEdit, 
             </button>
         </div>
     );
-}
+};
 
 export { AdditionTask };

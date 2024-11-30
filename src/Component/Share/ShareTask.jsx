@@ -23,10 +23,10 @@ const ShareModal = ({ title, about, onClose }) => {
         <div className="modal-overlay" onClick={onClose}>
             <div className="modal-share" onClick={handleModalClick}>
                 <div className="modal-share-content">
-                    <ShareButton 
-                        icon="copy" 
-                        onClick={handleCopyClick} 
-                        alt="Копировать" 
+                    <ShareButton
+                        icon="copy"
+                        onClick={handleCopyClick}
+                        alt="Копировать"
                     />
                     <ShareButton icon="vk" alt="Поделиться в VK" />
                     <ShareButton icon="telegram" alt="Поделиться в Telegram" />
