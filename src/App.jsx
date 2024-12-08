@@ -1,18 +1,15 @@
+// src/App.jsx
 import React from 'react';
-import './StyleMain.css';
-import "./App.css"
-import { CreateTask } from "./Component/CreateTask/CreateTask.jsx"
-import { AdditionTask } from "./Component/AdditionTask/AdditionTask.jsx"
+import AddTaskForm from './components/AddTaskForm';  // Обновлен путь к AddTaskForm
 
-function App() {
+const App = () => {
   return (
     <div>
-      <div className="container">
-        <CreateTask />
-        <AdditionTask />
-      </div>
+      <h1>Task List</h1>
+      <AddTaskForm />
+      {/* другие компоненты */}
     </div>
   );
-}
+};
 
 export default App;

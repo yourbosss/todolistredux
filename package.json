@@ -1,5 +1,5 @@
 {
-  "name": "todolistreact",
+  "name": "todolistredux",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
@@ -13,9 +13,12 @@
   "description": "",
   "dependencies": {
     "@hello-pangea/dnd": "^17.0.0",
+    "@reduxjs/toolkit": "^2.4.0",
     "react": "^18.3.1",
     "react-beautiful-dnd": "^13.1.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-redux": "^7.2.9",
+    "redux": "^4.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.25.9",

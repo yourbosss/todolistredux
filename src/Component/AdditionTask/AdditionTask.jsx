@@ -1,39 +1,47 @@
+// src/components/AdditionTask.js
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import './AdditionTask.scss';
 import shareIcon from '../../Icon/sharee.png';
 import editIcon from '../../Icon/edit.png';
 import deleteIcon from '../../Icon/cross.png';
 import infoIcon from '../../Icon/info.png';
 
-const AdditionTask = ({ taskTitle, taskAbout, onToggleExpand, onDelete, onEdit, onShare }) => {
+const AdditionTask = ({ taskId, taskTitle, taskAbout, expanded }) => {
     const [showIcons, setShowIcons] = useState(false);
+    const dispatch = useDispatch();
 
     const handleShareClick = () => {
-        if (onShare && typeof onShare === 'function') {
-            onShare({ title: taskTitle, about: taskAbout });
-        } else {
-            console.error('onShare is not a function');
-        }
+        console.log('Share clicked');
     };
 
     const handleEditClick = () => {
-        if (onEdit && typeof onEdit === 'function') {
-            onEdit({ title: taskTitle, about: taskAbout });
-        } else {
-            console.error('onEdit is not a function');
-        }
+        dispatch({
+            type: 'EDIT_TASK',
+            payload: {
+                id: taskId,
+                title: taskTitle,
+                about: taskAbout,
+            },
+        });
+    };
+
+    const handleDeleteClick = () => {
+        dispatch({
+            type: 'DELETE_TASK',
+            payload: taskId,
+        });
     };
 
     const handleInfoClick = () => {
         console.log('Info clicked');
     };
 
-    const handleDeleteClick = () => {
-        if (onDelete && typeof onDelete === 'function') {
-            onDelete();
-        } else {
-            console.error('onDelete is not a function');
-        }
+    const handleExpandToggle = () => {
+        dispatch({
+            type: 'TOGGLE_EXPAND_TASK',
+            payload: taskId,
+        });
     };
 
     return (
@@ -44,7 +52,7 @@ const AdditionTask = ({ taskTitle, taskAbout, onToggleExpand, onDelete, onEdit, 
         >
             <div className="task-content">
                 <h3 className="task-title">{taskTitle}</h3>
-                <p onClick={onToggleExpand} className="task-about">
+                <p onClick={handleExpandToggle} className={`task-about ${expanded ? 'expanded' : 'collapsed'}`}>
                     {taskAbout}
                 </p>
             </div>
