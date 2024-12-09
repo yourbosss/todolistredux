@@ -22,16 +22,29 @@
 
 .icons-container {
     position: absolute;
+    /* Позиционирование кнопок относительно контейнера */
     right: 8px;
+    /* Отступ от правого края */
     bottom: -48px;
+    /* Позиция ниже контейнера */
     display: flex;
     padding: 6px;
     border-radius: 6px;
     background: rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease;
+    /* Плавное появление */
+    opacity: 0;
+    /* Начальное состояние невидимо */
+}
+
+.custom-task-container:hover .icons-container {
+    opacity: 1;
+    /* Показать кнопки при наведении на контейнер */
 }
 
 .task-content {
     flex-grow: 1;
+    /* Позволяет контенту занимать доступное пространство */
     min-width: 0;
     padding-right: 10px;
 }
@@ -46,13 +59,18 @@
 
 .task-about.collapsed {
     max-height: 40px;
+    /* Ограничение высоты для свёрнутого состояния */
     overflow: hidden;
+    /* Скрытие переполнения */
     color: #b0b0b0;
+    /* Цвет для свёрнутого состояния */
 }
 
 .task-about.expanded {
     max-height: none;
+    /* Не ограничиваем высоту для развернутого состояния */
     color: #ffffff;
+    /* Цвет для развернутого состояния */
 }
 
 .action-button {

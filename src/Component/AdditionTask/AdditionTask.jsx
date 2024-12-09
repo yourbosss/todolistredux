@@ -1,55 +1,39 @@
-// src/components/AdditionTask.js
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteTask, toggleExpandTask, editTask } from '../Store/taskSlice.js';
+import EditModal from '../Edit/Edit'; // Импортируем модальное окно для редактирования
+import ShareModal from '../Share/ShareTask'; // Импортируем модальное окно для дележа
 import './AdditionTask.scss';
-import shareIcon from '../../Icon/sharee.png';
-import editIcon from '../../Icon/edit.png';
-import deleteIcon from '../../Icon/cross.png';
-import infoIcon from '../../Icon/info.png';
 
-const AdditionTask = ({ taskId, taskTitle, taskAbout, expanded }) => {
+const AdditionTask = ({ taskId, taskTitle, taskAbout }) => {
     const [showIcons, setShowIcons] = useState(false);
+    const [isEditModalOpen, setEditModalOpen] = useState(false);
+    const [isShareModalOpen, setShareModalOpen] = useState(false);
     const dispatch = useDispatch();
-
-    const handleShareClick = () => {
-        console.log('Share clicked');
-    };
-
-    const handleEditClick = () => {
-        dispatch({
-            type: 'EDIT_TASK',
-            payload: {
-                id: taskId,
-                title: taskTitle,
-                about: taskAbout,
-            },
-        });
-    };
+    const expandedTasks = useSelector(state => state.tasks.expandedTasks);
 
     const handleDeleteClick = () => {
-        dispatch({
-            type: 'DELETE_TASK',
-            payload: taskId,
-        });
-    };
-
-    const handleInfoClick = () => {
-        console.log('Info clicked');
+        dispatch(deleteTask(taskId));
     };
 
     const handleExpandToggle = () => {
-        dispatch({
-            type: 'TOGGLE_EXPAND_TASK',
-            payload: taskId,
-        });
+        dispatch(toggleExpandTask(taskId));
+    };
+
+    const expanded = expandedTasks[taskId] || false;
+
+    const handleEditSave = (updatedTask) => {
+        dispatch(editTask(updatedTask));
+        setEditModalOpen(false); // Закрываем модальное окно после сохранения
+    };
+
+    const handleShareClick = () => {
+        setShareModalOpen(true);
+        setShowIcons(true); // Показываем иконки при нажатии на "Поделиться"
     };
 
     return (
-        <div
-            className="custom-task-container"
-            onMouseEnter={() => setShowIcons(true)}
-            onMouseLeave={() => setShowIcons(false)}
-        >
+        <div className="custom-task-container">
             <div className="task-content">
                 <h3 className="task-title">{taskTitle}</h3>
                 <p onClick={handleExpandToggle} className={`task-about ${expanded ? 'expanded' : 'collapsed'}`}>
@@ -57,23 +41,40 @@ const AdditionTask = ({ taskId, taskTitle, taskAbout, expanded }) => {
                 </p>
             </div>
 
+            {/* Кнопка "Поделиться", которая открывает модальное окно */}
+            <button className="action-button" onClick={handleShareClick}>
+                Поделиться
+            </button>
+
+            {/* Иконки для редактирования и удаления */}
             {showIcons && (
                 <div className="icons-container">
-                    <button className="action-button" onClick={handleShareClick}>
-                        <img src={shareIcon} alt="Share" className="action-icon" />
+                    <button className="action-button" onClick={() => setEditModalOpen(true)}>
+                        Изменить
                     </button>
-                    <button className="action-button" onClick={handleEditClick}>
-                        <img src={editIcon} alt="Edit" className="action-icon" />
-                    </button>
-                    <button className="action-button" onClick={handleInfoClick}>
-                        <img src={infoIcon} alt="Info" className="action-icon" />
+                    <button className="action-button" onClick={handleDeleteClick}>
+                        Удалить
                     </button>
                 </div>
             )}
 
-            <button className="action-button delete-button" onClick={handleDeleteClick}>
-                <img src={deleteIcon} alt="Delete" className="action-icon" />
-            </button>
+            {/* Модальное окно для редактирования */}
+            <EditModal
+                isOpen={isEditModalOpen}
+                onClose={() => setEditModalOpen(false)}
+                task={{ id: taskId, title: taskTitle, about: taskAbout }}
+                onSave={handleEditSave}
+            />
+
+            {/* Модальное окно для дележа */}
+            <ShareModal
+                title={taskTitle}
+                about={taskAbout}
+                onClose={() => {
+                    setShareModalOpen(false);
+                    setShowIcons(false);
+                }}
+            />
         </div>
     );
 };

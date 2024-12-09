@@ -1,8 +1,14 @@
-import { combineReducers } from 'redux';
-import taskReducer from './redux/task.slice'; // Исправлен путь
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Provider } from 'react-redux';
+import App from "./App";
+import store from "./Component/Store/store";
 
-const rootReducer = combineReducers({
-  tasks: taskReducer,  // Связываем слайс с состоянием tasks
-});
+const container = document.getElementById("root");
+const root = ReactDOM.createRoot(container);
 
-export default rootReducer;
+root.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+);

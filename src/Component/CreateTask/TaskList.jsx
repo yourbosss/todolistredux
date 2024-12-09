@@ -1,14 +1,12 @@
-// src/components/TaskList.js
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { AdditionTask } from './AdditionTask';
+import { AdditionTask } from '../AdditionTask/AdditionTask.jsx';
 
 const TaskList = () => {
-  const tasks = useSelector((state) => state.tasks);
-
+  const tasks = useSelector((state) => state.tasks.tasks);
   return (
     <div>
-      {tasks.map((task) => (
+      {Array.isArray(tasks) && tasks.map((task) => (
         <AdditionTask
           key={task.id}
           taskId={task.id}
@@ -21,4 +19,4 @@ const TaskList = () => {
   );
 };
 
-export { TaskList };
+export default TaskList;

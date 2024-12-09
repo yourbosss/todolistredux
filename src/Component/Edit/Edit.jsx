@@ -14,6 +14,7 @@ export default function EditModal({ isOpen, onClose, task, onSave }) {
     }, [task]);
 
     const handleClose = () => {
+        setErrorMessage(''); // Сбрасываем сообщение об ошибке при закрытии
         onClose();
     };
 
@@ -24,14 +25,14 @@ export default function EditModal({ isOpen, onClose, task, onSave }) {
         }
 
         try {
-            await onSave({ ...task, title, about });
-            onClose();
+            await onSave({ ...task, title, about }); // Передаем обновленные данные
+            handleClose(); // Закрываем модальное окно после сохранения
         } catch (error) {
             setErrorMessage('Ошибка при сохранении задачи. Попробуйте позже.');
         }
     };
 
-    if (!isOpen) return null;
+    if (!isOpen) return null; // Если модальное окно не открыто, ничего не рендерим
 
     return (
         <div className="modal-overlay">
@@ -41,7 +42,7 @@ export default function EditModal({ isOpen, onClose, task, onSave }) {
                     value={title}
                     onChange={(e) => {
                         setTitle(e.target.value);
-                        if (errorMessage) setErrorMessage('');
+                        if (errorMessage) setErrorMessage(''); // Сбрасываем сообщение об ошибке
                     }}
                     placeholder="Название задачи"
                     className="modal-input"
@@ -51,7 +52,7 @@ export default function EditModal({ isOpen, onClose, task, onSave }) {
                     value={about}
                     onChange={(e) => {
                         setAbout(e.target.value);
-                        if (errorMessage) setErrorMessage('');
+                        if (errorMessage) setErrorMessage(''); // Сбрасываем сообщение об ошибке
                     }}
                     placeholder="Описание задачи"
                     className="modal-textarea"

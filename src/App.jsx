@@ -1,15 +1,21 @@
-// src/App.jsx
 import React from 'react';
-import AddTaskForm from './components/AddTaskForm';  // Обновлен путь к AddTaskForm
+import { Provider } from 'react-redux';
 
-const App = () => {
+import './StyleMain.css';
+import store from './Component/Store/store.js';
+import './App.css';
+import { CreateTask } from './Component/CreateTask/CreateTask.jsx';
+import { AdditionTask } from './Component/AdditionTask/AdditionTask.jsx';
+
+function App() {
   return (
-    <div>
-      <h1>Task List</h1>
-      <AddTaskForm />
-      {/* другие компоненты */}
-    </div>
+    <Provider store={store}>
+      <div className="container">
+        <CreateTask />
+        <AdditionTask />
+      </div>
+    </Provider>
   );
-};
+}
 
 export default App;

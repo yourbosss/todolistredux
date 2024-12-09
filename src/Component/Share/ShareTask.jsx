@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+
 import './ShareTask.scss';
 
 const ShareModal = ({ title, about, onClose }) => {
